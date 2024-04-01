@@ -1,0 +1,67 @@
+/* 스크롤 버튼, 세팅 버튼 */
+div#scroll-button, div#setting-button, div#help-button {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+    background: var(--metalic-blue-w1);
+    border-radius: 50%;
+}
+
+/* 스크롤 버튼, 세팅 버튼, 닫기 버튼 (마우스를 올려보았을 때) */
+div#scroll-button:hover, div#setting-button:hover {
+    cursor: pointer;
+    background: var(--metalic-blue-w2);
+}
+
+/* 도움 버튼 (마우스를 올려보았을 떄)*/
+div#help-button:hover {
+    cursor: help;
+    background: var(--metalic-blue-w2);
+}
+
+
+    
+div#close-button:hover {
+    cursor: pointer;
+}
+/* 스크롤 버튼, 세팅 버튼, 도움 버튼, 닫기 버튼 (마우스를 클릭했을 때) */
+div#scroll-button:active, div#setting-button:active, div#help-button:active, div#close-button:active {
+    background: var(--metalic-blue-w3);
+}
+
+/* 스크롤 버튼 위치 설정 */
+div#scroll-button {
+    position: fixed;
+    right: 48px;
+    bottom: 48px;
+    z-index: 1;
+}
+
+/* 세팅 버튼 위치 설정 */
+div#setting-button {
+    position: fixed;
+    right: 48px;
+    bottom: calc((60px + 24px) + 48px);
+    z-index: 1;
+}
+
+/* 도움 버튼 위치 설정 */
+div#help-button {
+    position: fixed;
+    right: 48px;
+    bottom: calc((60px + 24px) + ((60px + 24px) + 48px))
+}
+
+/* 닫기 버튼 설정 */
+div#close-button {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
