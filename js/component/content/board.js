@@ -1,7 +1,6 @@
-import { boardData } from "./content.js";
 import { BoardInfo } from "../../shared/boardInfo.js";
 import { getCurrentDate, getYear, getMonth, getDate, getHours, getMinutes } from "../../shared/currentDate.js";
-
+import { updateBoardData, findIndexOfBoardData, updateTextContentOfBoard } from "../content/content.js";
 // 보드 초기화
 export function initBoard(boardInfo) {
     const board = document.createElement("div");
@@ -45,12 +44,11 @@ export function initBoard(boardInfo) {
                 board.appendChild(h4);
 
                 // boardData 업데이트
-                const index = boardData.findIndex(info => info === boardInfo);
+                const index = findIndexOfBoardData(boardInfo);
                 console.log(index); 
                 if (index !== -1) {
-                    boardData[index].textContent = updatedText;
+                    updateTextContentOfBoard(index, updatedText);
                 }
-                console.log(boardData);
             } 
             // 다시 div로 변경
             input.parentNode.replaceChild(board, input);
@@ -61,20 +59,22 @@ export function initBoard(boardInfo) {
 }
 
 // board를 만드는 함수
-function createBoard(boardInfo) {
+function createBoard(boardInfo, isInitial=true) {
     const content = document.getElementById("content");
     const board = initBoard(boardInfo);
     content.appendChild(board);
 
-    boardData.push(boardInfo);
-    console.log(boardData);
+    if (isInitial) {
+        updateBoardData(boardInfo);
+    }
 }
 
 // boardData를 로드해와 보드 생성하는 함수
 export function createBoards(boardData) {
-    console.log(boardData);
+    if (boardData == null) return;
+
     boardData.forEach((boardInfo) => {
-        createBoard(boardInfo);
+        createBoard(boardInfo, false);
     })
 }
 
@@ -102,7 +102,6 @@ export function initNewBoard() {
             currentDate,
             currentDate,
         );
-        console.log(boardInfo);
         createBoard(boardInfo);
     });
 

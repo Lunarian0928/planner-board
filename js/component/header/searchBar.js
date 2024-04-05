@@ -1,4 +1,6 @@
 var query = "";
+var searchAttempt = false;
+let searchData = [];
 
 export function initSearchBar() {
     const searchBar = document.createElement("div");
@@ -13,8 +15,17 @@ export function initSearchBar() {
     return searchBar;
 }
 
-export function searchHandler() {
-    console.log("query: ", query);
+function attemptSearch() {
+    searchData = filterBoardData(query);
+    searchAttempt = true;
+}
+
+export function getSearchAttmpt() {
+    return searchAttempt;
+}
+
+export function getSearchData() {
+    return searchData;
 }
 
 function initSearchIcon() {
@@ -23,11 +34,7 @@ function initSearchIcon() {
     searchIcon.textContent = "search";
 
     searchIcon.addEventListener("click", () => {
-        searchHandler();
-    })
-
-    searchIcon.addEventListener("keydown", () => {
-        searchHandler();
+        attemptSearch();
     })
 
     return searchIcon;
@@ -37,9 +44,17 @@ function initSearchInput() {
     const searchInput = document.createElement("input");
     searchInput.id = "search-input";
     searchInput.value = query;
-
+    searchInput.value = "미구현"
     searchInput.addEventListener("change", (event) => {
         query = event.currentTarget.value;
     });
+
+    searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            attemptSearch();
+        } 
+        
+    });
+
     return searchInput;
 }

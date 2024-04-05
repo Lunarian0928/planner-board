@@ -1,5 +1,5 @@
-/* 스크롤 버튼, 세팅 버튼 */
-div#scroll-button, div#setting-button, div#help-button {
+/* 스크롤 버튼, 세팅 버튼, 도움말 버튼, 삭제 버튼 */
+div#scroll-button, div#setting-button, div#help-button, div#remove-button {
     width: 60px;
     height: 60px;
 
@@ -11,8 +11,8 @@ div#scroll-button, div#setting-button, div#help-button {
     border-radius: 50%;
 }
 
-/* 스크롤 버튼, 세팅 버튼, 닫기 버튼 (마우스를 올려보았을 때) */
-div#scroll-button:hover, div#setting-button:hover {
+/* 스크롤 버튼, 세팅 버튼, 삭제 버튼 (마우스를 올려보았을 때) */
+div#scroll-button:hover, div#setting-button:hover, div#remove-button:hover {
     cursor: pointer;
     background: var(--metalic-blue-w2);
 }
@@ -22,9 +22,8 @@ div#help-button:hover {
     cursor: help;
     background: var(--metalic-blue-w2);
 }
-
-
     
+/* 닫기 버튼 (마우스를 올려보았을 때) */
 div#close-button:hover {
     cursor: pointer;
 }
@@ -64,4 +63,11 @@ div#close-button {
     display: flex;
     justify-content: center;
     align-items: center; 
+}
+
+/* 삭제 버튼 설정 */
+div#remove-button {
+    position: fixed;
+    right: 48px;
+    bottom: calc((60px + 24px) + ((60px + 24px) + ((60px + 24px) + 48px)))
 }
